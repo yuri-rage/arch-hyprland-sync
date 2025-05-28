@@ -10,4 +10,7 @@ fi
 
 yay -Sy --needed --noconfirm bash-completion bat eza fastfetch fd fzf man-db ripgrep starship tldr trash-cli wget zoxide
 
+# update bat to use configured theme
+bat cache --build
+
 echo "bash-utils install complete."
