@@ -1,51 +1,95 @@
 #!/usr/bin/env bash
+set -e
 
 script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 
+# Ensure YURI_ENV is set
 if [ -z "$YURI_ENV" ]; then
-    echo "env var YURI_ENV needs to be present"
+    echo "Environment variable YURI_ENV is not set. Exiting."
     exit 1
 fi
 
-# if i just did YURI_ENV=$(pwd) ./run then this is needed for the rest of the
-# scripts
-export YURI_ENV="$YURI_ENV"
+dry_run=0
+list_only=0
+filters=()
 
-grep=""
-dry_run="0"
-
+# Parse arguments
 while [[ $# -gt 0 ]]; do
-    echo "ARG: \"$1\""
-    if [[ "$1" == "--dry" ]]; then
-        dry_run="1"
-    else
-        grep="$1"
-    fi
+    case "$1" in
+        --dry)
+            dry_run=1
+            ;;
+        --list)
+            list_only=1
+            ;;
+        *)
+            filters+=("$1")
+            ;;
+    esac
     shift
 done
 
+# Exit early if no filters are provided and not listing
+if [[ ${#filters[@]} -eq 0 && "$list_only" -ne 1 ]]; then
+    echo "No filters provided. Specify one or more script names to run."
+    echo "Usage: ./run [--dry] <script-name> [more-script-names...]"
+    echo "       ./run --list"
+    exit 1
+fi
+
+# Logging helper
 log() {
-    if [[ $dry_run == "1" ]]; then
-        echo "[DRY_RUN]: $1"
+    if [[ $dry_run == 1 ]]; then
+        echo "[DRY RUN] $1"
     else
         echo "$1"
     fi
 }
 
-log "RUN: env: $env -- grep: $grep"
+log "Running scripts from: $script_dir/scripts"
+log "YURI_ENV: $YURI_ENV"
 
-scripts_dir=`find $script_dir/scripts -mindepth 1 -maxdepth 1 -executable`
+mapfile -t scripts < <(find "$script_dir/scripts" -mindepth 1 -maxdepth 1 -type f -executable)
 
-for s in $scripts_dir; do
-    if basename $s | grep -vq "$grep"; then
-        log "grep \"$grep\" filtered out $s"
+available=()
+
+for script in "${scripts[@]}"; do
+    script_name="$(basename "$script")"
+
+    if [[ $list_only -eq 1 ]]; then
+        available+=("$script_name")
         continue
     fi
 
-    log "running script: $s"
+    for keyword in "${filters[@]}"; do
+        if [[ "$script_name" == "$keyword"* ]]; then
+            available+=("$script_name")
+            break
+        fi
+    done
+done
 
-    if [[ $dry_run == "0" ]]; then
-        $s
+if [[ "$list_only" == 1 ]]; then
+    echo "Available scripts:"
+    for name in "${available[@]}"; do
+        echo "  $name"
+    done
+    exit 0
+fi
+
+if [[ ${#available[@]} -eq 0 ]]; then
+    echo "No matching scripts found."
+    echo "Usage: ./run [--dry] <script-name> [more-script-names...]"
+    echo "       ./run --list"
+    exit 1
+fi
+
+# Execute scripts
+for script_name in "${available[@]}"; do
+    full_path="$script_dir/scripts/$script_name"
+    log "Running: $script_name"
+    if [[ $dry_run == 0 ]]; then
+        "$full_path"
     fi
 done
 
