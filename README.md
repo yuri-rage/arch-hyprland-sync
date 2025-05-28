@@ -18,7 +18,6 @@ Issue the following in a bash shell:
 cd ~
 git clone https://www.github.com/yuri-rage/arch-hyprland-sync
 cd arch-hyprland-sync
-YURI_ENV="$PWD" ./run reflector-update-mirrorlist
 YURI_ENV="$PWD" ./run yay-install
 YURI_ENV="$PWD" ./run stow-all
 ```
@@ -44,6 +43,17 @@ YURI_ENV="$PWD" ./run hyprland-install --dry
 Additional configuration files can be added in the `config` folder following the format of the existing ones. Any file added to an existing config or to a new config will by sync'd upon re-running the `stow-all` script.
 
 To version control your own dotfiles, fork this repository and then push changes to dotfiles as desired. If `stow` is used properly, all edits will remain within the cloned directory, so pushing upstream should be as simple as editing, committing, and pushing to origin.
+
+## Services
+
+You may have to manually enable services such as:
+```bash
+sudo systemctl enable --now NetworkManager
+sudo systemctl enable --now sddm
+systemctl --user enable --now hyprpaper hyprpolkitagent waybar
+# and to automount the smb share with gvfs
+systemctl --user enable --now mount-smb
+```
 
 ## NeoVim
 

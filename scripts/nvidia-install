@@ -10,4 +10,4 @@ fi
 
 yay -Sy --needed --noconfirm mesa-utils nvidia nvidia-settings nvidia-utils
 
-echo "nvidia install complete.
+echo "nvidia install complete."

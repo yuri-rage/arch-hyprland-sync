@@ -10,4 +10,4 @@ fi
 
 yay -Sy --needed --noconfirm blueman bluez bluez-utils networkmanager network-manager-applet
 
-echo "Network/bluetooth install complete.
+echo "Network/bluetooth install complete."

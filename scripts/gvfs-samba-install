@@ -10,4 +10,4 @@ fi
 
 yay -Sy --needed --noconfirm gvfs gvfs-smb
 
-echo "gvfs-samba install complete.
+echo "gvfs-samba install complete."

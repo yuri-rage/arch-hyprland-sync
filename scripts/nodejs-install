@@ -10,4 +10,4 @@ fi
 
 yay -Sy --needed --noconfirm nodejs npm
 
-echo "nodejs install complete.
+echo "nodejs install complete."

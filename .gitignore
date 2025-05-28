@@ -1,0 +1,5 @@
+# ignore generated systemd files
+*.wants
+
+# ignore generated lazy-lock file
+lazy-lock.json

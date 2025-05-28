@@ -23,4 +23,4 @@ sudo systemctl start systemd-zram-setup@zram0.service
 
 zramctl # should echo zram status
 
-echo "zram install complete.
+echo "zram install complete."

@@ -8,6 +8,6 @@ if ! command -v yay &> /dev/null; then
     exit 1
 fi
 
-yay -Sy --needed --noconfirm bash-completion bat eza fastfetch fzf man-db starship tldr trash-cli zoxide
+yay -Sy --needed --noconfirm bash-completion bat eza fastfetch fzf man-db ripgrep starship tldr trash-cli zoxide
 
-echo "bash-utils install complete.
+echo "bash-utils install complete."

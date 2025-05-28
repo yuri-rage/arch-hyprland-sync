@@ -10,4 +10,4 @@ fi
 
 yay -Sy --needed --noconfirm luarocks neovim
 
-echo "neovim install complete.
+echo "neovim install complete."

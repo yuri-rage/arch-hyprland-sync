@@ -34,7 +34,7 @@ yay -Y --gendb
 
 yay -S --needed --noconfirm reflector
 
-sudo reflector -p https --sort rate -c US --verbose --save /etc/pacman.d/mirrorlist
+sudo reflector --verbose -c US -p https --age 12 --latest 20 --number 10 --sort rate --save /etc/pacman.d/mirrorlist
 
 echo "yay install complete."
 
