@@ -1,0 +1,10 @@
+[Unit]
+Description=Mount SMB Share
+
+[Service]
+Type=oneshot
+ExecStart=/bin/bash -c '/usr/bin/gio mount smb://ragenas/ssd-share < $HOME/.local/share/smb/smbcredentials'
+RemainAfterExit=true
+
+[Install]
+WantedBy=default.target

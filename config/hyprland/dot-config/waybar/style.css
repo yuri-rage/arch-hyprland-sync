@@ -1,0 +1,201 @@
+* {
+    font-family: "Noto Sans Nerd Font";
+    font-weight: normal;
+    font-size: 12px;
+    min-height: 14px;
+    margin-left: 2px;
+    margin-right: 2px;
+    color: rgb(176, 229, 247);
+}
+
+window#waybar {
+    background: transparent;
+}
+
+#workspaces button {
+    background: transparent;
+}
+
+#workspaces button.active {
+    background: transparent;
+}
+
+#workspaces button:hover {
+    box-shadow: none;
+    text-shadow: none;
+    background: transparent;
+    border: none;
+}
+
+#taskbar button {
+    box-shadow: none;
+    text-shadow: none;
+    padding: 0px;
+    margin-right: 0px;
+    margin-left: 0px;
+    padding-right: 4px;
+    padding-left: 4px;
+    color: #242639;
+}
+
+#taskbar button.active {
+    background: transparent;
+    color: #242639;
+    margin-right: 0px;
+    margin-left: 0px;
+    padding-right: 4px;
+    padding-left: 4px;
+}
+
+#taskbar button:hover {
+    /*Colors are reverted. Although the BG may not work everywhere*/
+    background: #242639;
+    color: #AECCE6;
+}
+
+#clock {
+    padding: 0px 5px 0px 5px;
+}
+
+#cpu {
+    box-shadow: none;
+    text-shadow: none;
+    padding: 0px;
+    border-radius: 5px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    padding-right: 4px;
+    padding-left: 4px;
+}
+
+#network {
+    padding: 0px 0px 0px 10px;
+}
+
+#taskbar {
+    padding: 0px;
+}
+
+#battery {
+    padding: 0px 10px 0px 0px;
+}
+
+#custom-menu {
+    padding: 0px 10px 0px 10px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 14px;
+}
+
+#custom-menu:hover {
+    background: rgba(176, 229, 247, 0.25);
+}
+
+#pulseaudio {
+    padding: 0px 10px 0px 10px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 14px;
+}
+
+#pulseaudio:hover {
+    background: rgba(176, 229, 247, 0.25);
+}
+
+menu label {
+    color: #DFDFDF;
+}
+menu label:disabled {
+    color: #DFDFDF;
+}
+
+#memory {
+    box-shadow: none;
+    text-shadow: none;
+    padding: 0px;
+    border-radius: 5px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    padding-right: 4px;
+    padding-left: 4px;
+}
+
+#disk {
+    box-shadow: none;
+    text-shadow: none;
+    padding: 0px;
+    border-radius: 5px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    padding-right: 4px;
+    padding-left: 4px;
+}
+
+#tray {
+    padding: 0px;
+}
+
+#user {
+    box-shadow: none;
+    text-shadow: none;
+    padding: 0px;
+    border-radius: 5px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    padding-right: 4px;
+    padding-left: 4px;
+}
+
+#custom-quit {
+    box-shadow: none;
+    text-shadow: none;
+    padding: 0px;
+    border-radius: 5px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    margin-right: 2px;
+    margin-left: 2px;
+    padding-right: 10px;
+    padding-left: 10px;
+    color: #242639;
+}
+
+#custom-lock {
+    box-shadow: none;
+    text-shadow: none;
+    padding: 0px;
+    border-radius: 5px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    margin-right: 2px;
+    margin-left: 2px;
+    padding-right: 10px;
+    padding-left: 10px;
+    color: #242639;
+}
+
+#custom-reboot {
+    box-shadow: none;
+    text-shadow: none;
+    padding: 0px;
+    border-radius: 5px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    margin-right: 2px;
+    margin-left: 2px;
+    padding-right: 10px;
+    padding-left: 10px;
+    color: #242639;
+}
+
+#custom-shutdown {
+    box-shadow: none;
+    text-shadow: none;
+    padding: 0px;
+    border-radius: 5px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    margin-right: 2px;
+    margin-left: 2px;
+    padding-right: 10px;
+    padding-left: 10px;
+    color: #242639;
+}
