@@ -23,9 +23,6 @@ fi
 # use a separate bash alias file
 [ -f ~/.bash_aliases ]&& . ~/.bash_aliases
 
-# use fzf autocomplete features
-[ -f /usr/share/fzf/completion.bash ] && . /usr/share/fzf/completion.bash
-
 #######################################################
 # EXPORTS
 #######################################################
@@ -395,8 +392,6 @@ add_to_path "$HOME/.local/bin"
 eval "$(starship init bash)"
 eval "$(zoxide init bash)"
 
-[ -f ~/.fzf.bash ] && . ~/.fzf.bash
-
 # auto ls on change directory
 prev_dir="$PWD"
 auto_ls() {
@@ -414,3 +409,8 @@ fi
 export NVM_DIR="$HOME/.config/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# use fzf autocomplete features
+[ -f /usr/share/fzf/completion.bash ] && \. /usr/share/fzf/completion.bash
+[ -f /usr/share/fzf/completion.bash ] && \. /usr/share/fzf/key-bindings.bash
+

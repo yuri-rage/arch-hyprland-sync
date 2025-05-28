@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+# exit on error
+set -e
+
+if ! command -v yay &> /dev/null; then
+    echo "yay not found. Exiting."
+    exit 1
+fi
+
+yay -Sy --needed --noconfirm nodejs npm
+
+echo "nodejs install complete.

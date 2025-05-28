@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+# exit on error
+set -e
+
+if ! command -v yay &> /dev/null; then
+    echo "yay not found. Exiting."
+    exit 1
+fi
+
+yay -Sy --needed --noconfirm hyprland-git
+yay -Sy --needed --noconfirm ghostty hyprcursor-git hyprpaper-git hyprpicker-git hyprpolkitagent-git hyprshot-git
+yay -Sy --needed --noconfirm gimp mako-git rofi-wayland thunar waybar-git uwsm zen-browser-bin
+yay -Sy --needed --noconfirm pipewire pipewire-pulse pwvucontrol
+yay -Sy --needed --noconfirm gtk-theme-material-black nwg-look papirus-icon-theme rose-pine-hyprcursor
+yay -Sy --needed --noconfirm ttf-firacode-nerd ttf-font-awesome ttf-noto-nerd 
+
+echo "hyprland install complete.
+

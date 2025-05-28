@@ -18,14 +18,15 @@ Issue the following in a bash shell:
 cd ~
 git clone https://www.github.com/yuri-rage/arch-hyprland-sync
 cd arch-hyprland-sync
+YURI_ENV="$PWD" ./run reflector-update-mirrorlist
 YURI_ENV="$PWD" ./run yay-install
-YURI_ENV="$PWD" ./run stowall
+YURI_ENV="$PWD" ./run stow-all
 ```
-> The `stowall` script may result in a few errors regarding existing files. Move the offending files to a backup directory and re-run it.
+> The `stow-all` script may result in a few errors regarding existing files. Move the offending files to a backup directory and re-run it. The sooner you execute the stow-all command on a newly configured system, the better, since most dotfiles won't yet exist, and you won't have to go to the trouble of moving them in bulk to a backup directory.
 
 ## Usage
 
-The `scripts` directory contains install scripts for a fairly complete hyprland environment. To run a script, set the `YURI_ENV` environment variable to the cloned directory and use the `run` wrapper script.
+The `scripts` directory contains install scripts for a fairly complete hyprland environment. To run a script, set the `YURI_ENV` environment variable to the cloned directory and use the `run` wrapper script. For example:
 
 ```bash
 cd ~/arch-hyprland-sync
@@ -40,7 +41,7 @@ YURI_ENV="$PWD" ./run hyprland-install --dry
 
 ```
 
-Additional configuration files can be added in the `config` folder following the format of the existing ones. Any file added to an existing config or to a new config will by sync'd upon re-running the `stowall` script.
+Additional configuration files can be added in the `config` folder following the format of the existing ones. Any file added to an existing config or to a new config will by sync'd upon re-running the `stow-all` script.
 
 To version control your own dotfiles, fork this repository and then push changes to dotfiles as desired. If `stow` is used properly, all edits will remain within the cloned directory, so pushing upstream should be as simple as editing, committing, and pushing to origin.
 

@@ -10,6 +10,9 @@ fi
 
 echo "yay not found. Installing..."
 
+# make pacman color
+sudo sed -i 's/^#\(Color\)/\1/' /etc/pacman.conf
+
 # get dependencies
 sudo pacman -Sy --needed --noconfirm base-devel git
 
@@ -29,5 +32,9 @@ popd > /dev/null
 # run first use command
 yay -Y --gendb
 
-echo "yay installation complete."
+yay -S --needed --noconfirm reflector
+
+sudo reflector -p https --sort rate -c US --verbose --save /etc/pacman.d/mirrorlist
+
+echo "yay install complete."
 

@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+# Exit on error
+set -e
+
+if ! command -v reflector &> /dev/null; then
+    echo "reflector is not installed."
+fi
+
+sudo reflector --verbose -c US -p https --age 12 --latest 20 --number 10 --sort rate --save /etc/pacman.d/mirrorlist
+
