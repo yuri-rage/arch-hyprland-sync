@@ -1,4 +1,4 @@
-# Arch Sync
+# Arch Hyprland Sync
 
 Linux config file sync via bash and Gnu stow.
 

@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+# Exit on error
+set -e
+
+if command -v yay &> /dev/null; then
+    echo "yay is already installed."
+    exit 0
+fi
+
+echo "yay not found. Installing..."
+
+# get dependencies
+sudo pacman -Sy --needed --noconfirm base-devel git
+
+# create temp dir for build
+tmp_dir=$(mktemp -d)
+trap 'rm -rf "$tmp_dir"' EXIT
+
+git clone https://aur.archlinux.org/yay.git "$tmp_dir"
+pushd "$tmp_dir" > /dev/null
+
+# install yay
+makepkg -si --noconfirm
+
+# clean up
+popd > /dev/null
+
+# run first use command
+yay -Y --gendb
+
+echo "yay installation complete."
+

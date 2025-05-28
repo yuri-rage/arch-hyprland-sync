@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+set -e
+
+if ! command -v stow &> /dev/null; then
+    echo "stow not found. Installing..."
+    if ! command -v yay &> /dev/null; then
+        echo "yay not found. Cannot install stow. Exiting."
+        exit 1
+    fi
+    yay -Sy --needed stow
+fi
+
+if [ -z "$YURI_ENV" ]; then
+    echo "YURI_ENV is not set. Exiting."
+    exit 1
+fi
+
+STOW_DIR="$YURI_ENV/config"
+TARGET_DIR="$HOME"
+
+if [ ! -d "$STOW_DIR" ]; then
+    echo "Stow config directory not found: $STOW_DIR"
+    exit 1
+fi
+
+pushd "$STOW_DIR" > /dev/null
+
+for pkg in */; do
+    pkg_name="${pkg%/}"
+    echo "Stowing package: $pkg_name → $TARGET_DIR"
+    stow --dotfiles -v --target="$TARGET_DIR" "$pkg_name"
+done
+
+popd > /dev/null
+

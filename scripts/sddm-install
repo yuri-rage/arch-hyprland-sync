@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+# exit on error
+set -e
+
+if [ -z "$YURI_ENV" ]; then
+    echo "YURI_ENV is not set. Exiting."
+    exit 1
+fi
+
+if ! command -v yay &> /dev/null; then
+    echo "yay not found. Exiting."
+    exit 1
+fi
+
+yay -Sy --needed sddm sddm-sugar-dark
+
+sudo cp -v "$YURI_ENV/sys_config/sddm/sddm.conf" /etc
+sudo cp -Rv "$YURI_ENV/sys_config/sddm/yuri-dark" /usr/share/sddm/themes
+
