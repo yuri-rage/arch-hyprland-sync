@@ -2,9 +2,11 @@
 
 Linux config file sync via bash and [Gnu stow](https://www.gnu.org/software/stow/).
 
-Based heavily on ThePrimagen's work [here](https://github.com/ThePrimeagen/dev).
+![screenshot](screenshot.png)
 
-Unlicensed, as the original author did not license this but created video content showcasing its use as a tutorial.
+<sup>Original wallpaper artwork seems to originate [here](https://ray29rus.artstation.com/projects/dOQbgJ) but appears in multiple free-to-download wallpaper sites.<br>
+This project is licensed, as ThePrimeagen did not license the [repo that inspired it](https://github.com/ThePrimeagen/dev) but created video content showcasing its use as a tutorial.
+</sup>
 
 ## Install
 
