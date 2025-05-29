@@ -13,13 +13,28 @@ Unlicensed, as the original author did not license this but created video conten
 > * User with sudo privileges
 > * git (installed with `sudo pacman -S git`)
 
-Issue the following in a bash shell:
+To get a minimally viable installation after `arch-chroot` and before rebooting:<br>
+(skip to the next bash code block if configuring a pre-existing system)
+```bash
+pacman -S sudo git
+useradd -m -G wheel -s /bin/bash yourname
+passwd yourname
+su yourname
+sudo ls # to ensure sudo works
+passwd -l root # if sudo works
+```
+
+Then issue the following:
 ```bash
 cd ~
 git clone https://www.github.com/yuri-rage/arch-hyprland-sync
 cd arch-hyprland-sync
 YURI_ENV="$PWD" ./run yay-install
 YURI_ENV="$PWD" ./run stow-all
+YURI_ENV="$PWD" ./run net-wifi-bluez-install # see "Services" below
+exit   # the chroot session
+reboot # you should be able to configure the rest after rebooting
+
 ```
 > The `stow-all` script may result in a few errors regarding existing files. Move the offending files to a backup directory and re-run it. The sooner you execute the stow-all command on a newly configured system, the better, since most dotfiles won't yet exist, and you won't have to go to the trouble of moving them in bulk to a backup directory.
 
