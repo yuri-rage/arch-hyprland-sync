@@ -3,3 +3,6 @@
 
 # ignore generated lazy-lock file
 lazy-lock.json
+
+# ignore smbcredentials file
+smbcredentials
