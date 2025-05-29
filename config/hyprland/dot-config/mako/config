@@ -1,0 +1,17 @@
+# ~/.config/mako/config
+
+background-color=#0a0e16cc
+progress-color=#2bb6f622
+border-color=#2bb6f6aa
+border-size=2
+border-radius=10
+
+width=350
+margin=20
+padding=10
+
+font=NotoSans Nerd Font 11
+text-color=#c8c4ce
+
+default-timeout=10000
+
