@@ -1,0 +1,187 @@
+/**
+ * ROFI Color theme
+ * User: Yuri
+ * Copyright: Yuri Rage (based on arthur.rasi by Dave Davenport)
+ */
+
+* {
+    foreground:  #c8c4ce;
+    backlight:   #ccffeedd;
+    background-color:  transparent;
+    dark: #0a0e16;
+    // Black
+    black:       #0a0e16;
+    tblack:      #0a0e16cc;
+    lightblack:  #363537;
+    tlightblack:  #363537cc;
+    //
+    // Red
+    red:         #c94d70;
+    lightred:    #fc618d;
+    //
+    // Green
+    green:       #83a178;
+    lightgreen:  #5dba71;
+    //
+    // Yellow
+    yellow:      #c8b252;
+    lightyellow:     #c8b252;
+    //
+    // Blue
+    blue:      #1e7eaa;
+    tblue:     #1e7eaabb;
+    tdarkblue: #2bb6f622;
+    lightblue:     #35899f;
+    //
+    // Magenta
+    magenta:      #726ab0;
+    lightmagenta:     #948ae3;
+    //
+    // Cyan
+    cyan:      #46b6d2;
+    tcyan:     #46b6d2de;
+    lightcyan:     #2bb6f6;
+    tlightcyan:    #2bb6f622;
+    //
+    // White
+    white:      #c8c4ce;
+    lightwhite:     #c8c4ce;
+    //
+    // Bold, Italic, Underline
+    highlight:     underline bold #c8c4ce;
+
+    transparent: rgba(0,0,0,0);
+    font: "NotoSans Nerd Font 11";
+}
+window {
+    location: center;
+    anchor:   center;
+    transparency: "real";
+    padding: 10px;
+    border:  0px;
+    border-radius: 10px;
+    color: @magenta;
+    background-color: @transparent;
+    spacing: 0;
+    children:  [mainbox];
+    orientation: horizontal;
+    width: 600px;
+}
+mainbox {
+    spacing: 0;
+    children: [ inputbar, message, listview ];
+}
+message {
+    border-color: @tblue;
+    border:  0px 1px 1px 1px;
+    border-radius: 10px;
+    padding: 5;
+    background-color: @tcyan;
+}
+message {
+    font: "NotoSans Nerd Font 10";
+    color: @black;
+}
+inputbar {
+    color: @white;
+    padding: 11px;
+    background-color: @tblack;
+    border: 1px 1px 1px 1px;
+    border-radius:  15px 15px 0px 0px;
+    border-color: @tblue;
+    font: "NotoSans Nerd Font 18";
+}
+entry,prompt,case-indicator {
+    text-font: inherit;
+    text-color:inherit;
+}
+prompt {
+    margin:     0px 0.3em 0em 0em ;
+}
+listview {
+    padding: 8px;
+    border-radius: 0px 0px 15px 15px;
+    border-color: @tblue;
+    border: 0px 1px 1px 1px;
+    background-color: @tblack;
+    dynamic: false;
+    lines: 10;
+}
+element {
+    padding: 3px;
+    vertical-align: 0.5;
+    border: 1px;
+    //border-color: transparent;
+    border-radius: 4px;
+    background-color: transparent;
+    color: @foreground;
+    font:inherit;
+}
+element-text {
+    background-color: inherit;
+    text-color:       inherit;
+}
+element selected.normal {
+    background-color: @tlightcyan;
+}
+element normal active {
+    foreground: @blue;
+}
+element normal urgent {
+    foreground: @lightred;
+}
+element alternate normal {
+}
+element alternate active {
+    foreground: @lightblue;
+}
+element alternate urgent {
+    foreground: @lightred;
+}
+element selected active {
+    background-color: @tdarkblue;
+    foreground: @dark;
+}
+element selected urgent {
+    background-color: @lightred;
+    foreground: @dark;
+}
+element normal normal {
+
+}
+vertb {
+    expand: false;
+    children: [ dummy0, mode-switcher, dummy1  ];
+}
+dummy0,  dummy1 {
+    expand: true;
+}
+mode-switcher {
+    expand: false;
+    orientation: vertical;
+    spacing: 0px;
+    border: 0px 0px 0px 0px;
+}
+button {
+    font: "FontAwesome 22";
+    padding: 6px;
+    border: 1px 0px 1px 1px;
+    border-radius: 4px 0px 0px 4px;
+    background-color: @tlightblack;
+    border-color: @foreground;
+    color: @foreground;
+    horizontal-align: 0.5;
+}
+button selected normal {
+    color: @dark;
+    border: 1px 0px 1px 1px;
+    background-color: @backlight;
+    border-color: @foreground;
+}
+error-message {
+    expand: true;
+    background-color: red;
+    border-color: darkred;
+    border: 1px;
+    padding: 1em;
+}

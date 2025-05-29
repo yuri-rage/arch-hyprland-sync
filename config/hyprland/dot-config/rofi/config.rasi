@@ -1,0 +1,7 @@
+
+@theme "themes/yuri.rasi"
+configuration {
+    drun {
+        display-name: " > ";
+    }
+}
