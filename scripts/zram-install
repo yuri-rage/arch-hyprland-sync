@@ -15,7 +15,7 @@ fi
 
 yay -Sy --needed --noconfirm zram-generator
 
-sudo cp -v "$YURI_ENV/sys_config/sddm/sddm.conf" /etc/systemd
+sudo cp -v "$YURI_ENV/sys_config/zram/zram-generator.conf" /etc/systemd
 
 sudo systemctl daemon-reload
 
