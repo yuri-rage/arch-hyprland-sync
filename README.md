@@ -5,7 +5,7 @@ Linux config file sync via bash and [Gnu stow](https://www.gnu.org/software/stow
 ![screenshot](screenshot.png)
 
 <sup>Original wallpaper artwork seems to originate [here](https://ray29rus.artstation.com/projects/dOQbgJ) but appears in multiple free-to-download wallpaper sites.<br>
-This project is licensed, as ThePrimeagen did not license the [repo that inspired it](https://github.com/ThePrimeagen/dev) but created video content showcasing its use as a tutorial.
+This project is not licensed, as ThePrimeagen did not license the [repo that inspired it](https://github.com/ThePrimeagen/dev) but created video content showcasing its use as a tutorial.
 </sup>
 
 ## Install
