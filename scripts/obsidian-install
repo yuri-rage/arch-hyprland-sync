@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+# exit on error
+set -e
+
+if ! command -v yay &> /dev/null; then
+    echo "yay not found. Exiting."
+    exit 1
+fi
+
+yay -Sy --needed --noconfirm obsidian
+
+echo -e "\n\033[1;32mRecommend using a private repo on GitHub as a vault.\033[0m"
+echo -e "\033[1;32mSee \033[0;4;34mhttps://blog.stackademic.com/sync-obsidian-notes-across-devices-for-free-using-github-mobile-pc-40db42eb91d0\033[0m\n"
+
+
+echo "obsidian install complete."
