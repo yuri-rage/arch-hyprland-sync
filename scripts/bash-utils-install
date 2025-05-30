@@ -8,7 +8,7 @@ if ! command -v yay &> /dev/null; then
     exit 1
 fi
 
-yay -Sy --needed --noconfirm bash-completion bat eza fastfetch fd fzf man-db ripgrep starship tldr trash-cli wget zoxide
+yay -Sy --needed --noconfirm bash-completion bat eza fastfetch fd fzf htop man-db ripgrep starship tldr trash-cli wget zoxide
 
 # update bat to use configured theme
 bat cache --build
