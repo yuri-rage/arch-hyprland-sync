@@ -57,6 +57,12 @@ YURI_ENV="$PWD" ./run hyprland-install --dry
 
 ```
 
+To avoid having to set the `YURI_ENV` variable on each call to the `run` script, you can set the environment variable:
+```bash
+cd ~/arch-hyprland-sync
+export YURI_ENV="$PWD"
+```
+
 Additional configuration files can be added in the `config` folder following the format of the existing ones. Any file added to an existing config or to a new config will by sync'd upon re-running the `stow-all` script.
 
 To version control your own dotfiles, fork this repository and then push changes to dotfiles as desired. If `stow` is used properly, all edits will remain within the cloned directory, so pushing upstream should be as simple as editing, committing, and pushing to origin.
