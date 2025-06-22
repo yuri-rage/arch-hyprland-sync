@@ -34,7 +34,7 @@
 			"default": ""
     		},
         "persistent-workspaces": {
-      		"HDMI-A-3": [2, 3, 4, 5]
+      		"Virtual-2": [1, 2, 3, 4, 5]
     		}
     },
     "wlr/taskbar": {

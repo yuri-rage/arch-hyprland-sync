@@ -1,0 +1,14 @@
+[Unit]
+Description=Sunshine (GameStream Host)
+After=graphical.target
+
+[Service]
+ExecStart=/usr/bin/sunshine
+Restart=on-failure
+Environment=XDG_RUNTIME_DIR=/run/user/%U
+Environment=WAYLAND_DISPLAY=wayland-0
+Environment=DISPLAY=:0
+
+[Install]
+WantedBy=default.target
+
