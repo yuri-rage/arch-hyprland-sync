@@ -7,7 +7,7 @@ return {
         local harpoon = require("harpoon")
 
         -- untracked convenience keybinds
-        vim.keymap.set("n", "Q", "<nop>")                                -- disable Ex mode
+        vim.keymap.set("n", "Q", "<nop>")                                      -- disable Ex mode
         vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>", { silent = true }) -- clear search on ESC
 
         -- motions
@@ -34,9 +34,13 @@ return {
         map("n", "<C-n>", "<CMD>Neotree filesystem toggle left<CR>", { desc = "Toggle Neotree", group = "Filesystem" })
 
         -- Telescope
-        local builtin = require("telescope.builtin")
-        map("n", "<C-p>", builtin.find_files, { desc = "Find files (Telescope)", group = "Filesystem" })
-        map("n", "<leader>fg", builtin.live_grep, { desc = "Live grep", group = "Filesystem" })
+        -- local builtin = require("telescope.builtin")
+        -- map("n", "<C-p>", builtin.find_files, { desc = "Find files (Telescope)", group = "Filesystem" })
+        -- map("n", "<leader>fg", builtin.live_grep, { desc = "Live grep", group = "Filesystem" })
+
+        -- fzf-lua
+        map("n", "<C-p>", require("fzf-lua").files, { desc = "Find files (fzf)", group = "Filesystem" })
+        map("n", "<leader>fg", require("fzf-lua").live_grep, { desc = "Live grep (fzf)", group = "Filesystem" })
 
         -- Oil
         map("n", "<leader>oi", "<CMD>Oil --float<CR>", { desc = "Edit filesystem (Oil)", group = "Filesystem" })
