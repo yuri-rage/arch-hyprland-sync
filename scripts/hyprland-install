@@ -9,7 +9,7 @@ if ! command -v yay &> /dev/null; then
 fi
 
 yay -Sy --needed --noconfirm hyprland-git
-yay -Sy --needed --noconfirm greetd sunshine vulkan-virtio wlroots-nogpu
+yay -Sy --needed --noconfirm greetd sunshine vulkan-virtio
 yay -Sy --needed --noconfirm ghostty hyprcursor-git hyprpaper-git hyprpicker-git hyprpolkitagent-git hyprshot-git
 yay -Sy --needed --noconfirm gimp mako-git rofi-wayland thunar waybar-git uwsm zen-browser-bin
 yay -Sy --needed --noconfirm cava pipewire pipewire-pulse pwvucontrol
