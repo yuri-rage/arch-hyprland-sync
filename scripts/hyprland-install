@@ -12,7 +12,7 @@ yay -Sy --needed --noconfirm hyprland-git
 yay -Sy --needed --noconfirm greetd sunshine vulkan-virtio
 yay -Sy --needed --noconfirm ghostty hyprcursor-git hyprpaper-git hyprpicker-git hyprpolkitagent-git hyprshot-git
 yay -Sy --needed --noconfirm gimp mako-git rofi-wayland waybar-git uwsm zen-browser-bin
-yay -Sy --needed --noconfirm thunar thunar-archive-plugin thunar-volman tumbler
+yay -Sy --needed --noconfirm thunar thunar-archive-plugin thunar-volman tumbler viu
 yay -Sy --needed --noconfirm cava pipewire pipewire-pulse pwvucontrol
 yay -Sy --needed --noconfirm gtk-theme-material-black nwg-look papirus-icon-theme rose-pine-hyprcursor
 yay -Sy --needed --noconfirm ttf-firacode-nerd ttf-font-awesome ttf-meslo-nerd ttf-noto-nerd 
