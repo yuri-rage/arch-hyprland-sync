@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+# exit on error
+set -e
+
+if ! command -v yay &> /dev/null; then
+    echo "yay not found. Exiting."
+    exit 1
+fi
+
+yay -Sy --needed --noconfirm greetd sunshine vulkan-virtio
+
+sudo cp -v "$YURI_ENV/sys_config/greetd/greetd.toml" /etc/greetd
+
+echo "headless-remote: install complete."
+

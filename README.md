@@ -1,7 +1,5 @@
 # Arch Hyprland Sync Headless Remote Branch
 
-Adds [Sunshine](https://github.com/LizardByte/Sunshine) configuration for headless remote desktop. Uses greetd for tty autologin.
-
 Linux config file sync via bash and [Gnu stow](https://www.gnu.org/software/stow/).
 
 ![screenshot](screenshot.png)
@@ -77,16 +75,22 @@ To version control your own dotfiles, fork this repository and then push changes
 You may have to manually enable services such as:
 ```bash
 sudo systemctl enable --now NetworkManager
-sudo systemctl enable --now greetd
+sudo systemctl enable --now sddm # if not using greetd for headless remote
 systemctl --user enable --now hyprpaper hyprpolkitagent waybar
-systemctl --user enable --now sunshine.service
 # and to automount the smb share with gvfs
 systemctl --user enable --now mount-smb
-# and finally, to ensure auto-login works
-loginctl enable-linger $USER
 ```
 
 ## Sunshine/Moonlight Remote Desktop
+
+[Sunshine](https://github.com/LizardByte/Sunshine) configuration for headless remote desktop. Uses greetd for tty autologin.
+
+```bash
+YURI_ENV="$PWD" ./run headless-remote-install
+loginctl enable-linger $USER
+sudo systemctl enable --now greetd
+sudo syctemctl enable --now sunshine.service
+```
 
 Start `sunshine` via the command line, and visit the web interface to create a username/password for your system. Then pair the Moonlight client by entering its PIN number.
 
