@@ -1,8 +1,6 @@
-# Arch Hyprland Sync Headless Remote Branch
+# Arch Hyprland Sync
 
 Linux config file sync via bash and [Gnu stow](https://www.gnu.org/software/stow/).
-
-For headless remote desktop configuration, see [this branch](https://github.com/yuri-rage/arch-hyprland-sync/tree/headless-remote).
 
 ![screenshot](screenshot.png)
 
