@@ -1,4 +1,4 @@
-# Arch Hyprland Sync
+# Arch Hyprland Sync Headless Remote Branch
 
 Linux config file sync via bash and [Gnu stow](https://www.gnu.org/software/stow/).
 
@@ -16,6 +16,9 @@ This project is not licensed, as ThePrimeagen did not license the [repo that ins
 > * Bootable Arch Linux installation
 > * User with sudo privileges
 > * git (installed with `sudo pacman -S git`)
+> * If using a Proxmox host, use the VirGL GPU.
+>   * If desired resolution is not available, try adding a line like `args: -device virtio-gpu-pci,xres=3440,yres=1440` to `/etc/pve/qemu-server/<vmid>.conf`.
+>   * This should enable desired resolution to be used in a `monitor` line of `hyprland.conf`.
 
 To get a minimally viable installation after `arch-chroot` and before rebooting:<br>
 (skip to the next bash code block if configuring a pre-existing system)
@@ -74,11 +77,24 @@ To version control your own dotfiles, fork this repository and then push changes
 You may have to manually enable services such as:
 ```bash
 sudo systemctl enable --now NetworkManager
-sudo systemctl enable --now sddm
+sudo systemctl enable --now sddm # if not using greetd for headless remote
 systemctl --user enable --now hyprpaper hyprpolkitagent waybar
 # and to automount the smb share with gvfs
 systemctl --user enable --now mount-smb
 ```
+
+## Sunshine/Moonlight Remote Desktop
+
+[Sunshine](https://github.com/LizardByte/Sunshine) configuration for headless remote desktop. Uses greetd for tty autologin.
+
+```bash
+YURI_ENV="$PWD" ./run headless-remote-install
+loginctl enable-linger $USER
+sudo systemctl enable --now greetd
+sudo syctemctl enable --now sunshine.service
+```
+
+Start `sunshine` via the command line, and visit the web interface to create a username/password for your system. Then pair the Moonlight client by entering its PIN number.
 
 ## NeoVim
 
