@@ -28,11 +28,30 @@ return {
                 if client.supports_method("textDocument/inlayHint") then
                     vim.lsp.inlay_hint.enable(bufnr, true)
                 end
-                
-                if client.supports_method("textDocument/formatting") then
-                    vim.cmd([[autocmd BufWritePre <buffer> lua vim.lsp.buf.format()]])
-                end
             end
+
+            -- Create a global autocmd for formatting on write
+            vim.api.nvim_create_autocmd("BufWritePre", {
+                callback = function(args)
+                    local bufnr = args.buf
+                    local clients = vim.lsp.get_clients({ bufnr = bufnr })
+                    local has_formatter = false
+
+                    for _, client in ipairs(clients) do
+                        if client.supports_method("textDocument/formatting") then
+                            has_formatter = true
+                            break
+                        end
+                    end
+
+                    if has_formatter then
+                        vim.lsp.buf.format({
+                            async = false,
+                            timeout_ms = 5000,
+                        })
+                    end
+                end,
+            })
 
             local servers = {
                 "ts_ls",
