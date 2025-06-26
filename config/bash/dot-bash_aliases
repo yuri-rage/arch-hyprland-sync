@@ -9,8 +9,8 @@ alias vi='edit'
 alias vim='edit'
 alias nano='edit'
 
-# alias fzf to be most useful
-alias fzf='fzf --preview="bat --color=always {}" --bind "enter:become(nvim {})"'
+# this causes fzf to fail when using the ** token
+# alias fzf='fzf --preview="bat --color=always {}" --bind "enter:become(nvim {})"' 
 
 #######################################################
 # GENERAL ALIASES
