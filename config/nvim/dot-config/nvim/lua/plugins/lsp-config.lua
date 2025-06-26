@@ -2,16 +2,7 @@ return {
     {
         "williamboman/mason.nvim",
         lazy = false,
-        config = function()
-            require("mason").setup()
-        end,
-    },
-    {
-        "williamboman/mason-lspconfig.nvim",
-        lazy = false,
-        opts = {
-            auto_install = true,
-        },
+        opts = {},
     },
     {
         "neovim/nvim-lspconfig",
@@ -20,42 +11,95 @@ return {
             "saghen/blink.cmp",
         },
         config = function()
-            -- local capabilities = require("cmp_nvim_lsp").default_capabilities()
             local capabilities = require("blink.cmp").get_lsp_capabilities()
             local lspconfig = require("lspconfig")
 
-            -- autoformat on save for lsp supported files
-            ---@diagnostic disable-next-line: unused-local
+            capabilities.textDocument.completion.completionItem.snippetSupport = true
+            capabilities.textDocument.completion.completionItem.resolveSupport = {
+                properties = { "documentation", "detail", "additionalTextEdits" }
+            }
+
             local on_attach = function(client, bufnr)
+                if vim.b[bufnr].lsp_attached then
+                    return
+                end
+                vim.b[bufnr].lsp_attached = true
+                
+                if client.supports_method("textDocument/inlayHint") then
+                    vim.lsp.inlay_hint.enable(bufnr, true)
+                end
+                
                 if client.supports_method("textDocument/formatting") then
                     vim.cmd([[autocmd BufWritePre <buffer> lua vim.lsp.buf.format()]])
                 end
             end
 
-            lspconfig.ts_ls.setup({
-                capabilities = capabilities,
-                on_attach = on_attach,
+            local servers = {
+                "ts_ls",
+                "html",
+                "clangd",
+                "pylsp",
+                "esbonio",
+                "lua_ls",
+                "dockerls",
+                "eslint",
+                "harper-ls",
+            }
+
+            local formatters = {
+                "black",
+                "clang-format",
+                "isort",
+                "prettierd",
+                "stylua",
+            }
+
+            local linters = {
+                "flake8",
+                "rstcheck",
+                "cspell",
+                "markdownlint",
+                "eslint_d",
+            }
+
+            require("mason").setup({
+                ensure_installed = servers,
             })
-            lspconfig.html.setup({
-                capabilities = capabilities,
-                on_attach = on_attach,
-            })
-            lspconfig.lua_ls.setup({
-                capabilities = capabilities,
-                on_attach = on_attach,
-            })
-            lspconfig.clangd.setup({
-                capabilities = capabilities,
-                on_attach = on_attach,
-            })
-            lspconfig.pylsp.setup({
-                capabilities = capabilities,
-                on_attach = on_attach,
-            })
-            lspconfig.esbonio.setup({
-                capabilities = capabilities,
-                on_attach = on_attach,
-            })
+
+            local mason_registry = require("mason-registry")
+            for _, tool in ipairs(vim.list_extend(formatters, linters)) do
+                if mason_registry.is_installed(tool) then
+                else
+                    local pkg = mason_registry.get_package(tool)
+                    if pkg then
+                        pkg:install()
+                    else
+                        vim.notify("Mason package not found: " .. tool, vim.log.levels.WARN)
+                    end
+                end
+            end
+
+            for _, server in ipairs(servers) do
+                if server == "harper-ls" then
+                    lspconfig.harper_ls.setup({
+                        capabilities = capabilities,
+                        on_attach = on_attach,
+                        settings = {
+                            ["harper-ls"] = {
+                                userDictPath = vim.fn.stdpath("config") .. "/spell/en.utf-8.add",
+                                linters = {
+                                    ToDoHyphen = false,
+                                },
+                            },
+                        },
+                    })
+                else
+                    lspconfig[server].setup({
+                        capabilities = capabilities,
+                        on_attach = on_attach,
+                    })
+                end
+            end
         end,
     },
 }

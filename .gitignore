@@ -9,3 +9,6 @@ smbcredentials
 
 # ignore superslicer cache lock files
 config/superslicer/dot-config/SuperSlicer/cache/*.lock
+
+# ignore backup files
+*.bak
