@@ -1,13 +1,13 @@
 [Unit]
-Description=Sunshine (GameStream Host)
-After=graphical.target
+Description=Sunshine (Remote Desktop Streaming Host)
+After=default.target
 
 [Service]
+ExecStartPre=/usr/bin/sh -c 'export XDG_RUNTIME_DIR=/run/user/$(id -u); for i in {1..20}; do [ -S "$XDG_RUNTIME_DIR/wayland-1" ] && exit 0; sleep 0.5; done; exit 1'
 ExecStart=/usr/bin/sunshine
 Restart=on-failure
-Environment=XDG_RUNTIME_DIR=/run/user/%U
-Environment=WAYLAND_DISPLAY=wayland-0
-Environment=DISPLAY=:0
+Environment="XDG_RUNTIME_DIR=/run/user/%U"
+Environment="WAYLAND_DISPLAY=wayland-1"
 
 [Install]
 WantedBy=default.target

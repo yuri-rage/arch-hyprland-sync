@@ -94,6 +94,11 @@ sudo syctemctl enable --now sunshine.service
 
 Start `sunshine` via the command line, and visit the web interface to create a username/password for your system. Then pair the Moonlight client by entering its PIN number.
 
+For ultrawide monitor support on HDMI-A-1, append the following to the options line in `/boot/loader/entries/arch.conf`:
+```
+video=HDMI-A-1:e video=HDMI-A-1:3440x1440@60 drm.edid_firmware=HDMI-A-1:edid/mag341cq.bin
+```
+
 ## NeoVim
 
 After completing installation/configuration, use `:Mason` from within NeoVim to install the language servers, linters, and formatters required by `lsp-config.lua` and `none-ls.lua`.

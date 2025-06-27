@@ -8,9 +8,11 @@ if ! command -v yay &> /dev/null; then
     exit 1
 fi
 
-yay -Sy --needed --noconfirm greetd sunshine vulkan-virtio
+yay -Sy --needed --noconfirm greetd nvidia nvidia-utils sunshine # vulkan-virtio # uncomment if using VirGL GPU
 
 sudo cp -v "$YURI_ENV/sys_config/greetd/greetd.toml" /etc/greetd
+sudo mkdir -p /lib/firmware/edid
+sudo cp "$YURI_ENV/sys_config/edid/mag341cq.bin" /lib/firmware/edid/mag341cq.bin # ultrawide MSI monitor support
 
 echo "headless-remote: install complete."
 
