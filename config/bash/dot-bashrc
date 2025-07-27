@@ -338,6 +338,7 @@ function whatsmyip () {
     # Check and print IPs for eth0, eth1, and wlan0
     print_ip "eth0"  " eth0"
     print_ip "eth1"  " eth1"
+    print_ip "ens18" "ens18"
     print_ip "wlan0" "wlan0"
 
     # External IP Lookup
@@ -441,8 +442,12 @@ auto_ls() {
 
 # hook venv activation to prompt (runs each time the prompt is redisplayed)
 if [[ $SHELL == */bash ]]; then
-    PROMPT_COMMAND="auto_ls; auto_activate_venv; $PROMPT_COMMAND"
+#    PROMPT_COMMAND="auto_ls; auto_activate_venv; $PROMPT_COMMAND"
+    PROMPT_COMMAND="auto_ls; $PROMPT_COMMAND"
 fi
+
+# hook direnv (which will activate venvs)
+eval "$(direnv hook bash)"
 
 export NVM_DIR="$HOME/.config/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm

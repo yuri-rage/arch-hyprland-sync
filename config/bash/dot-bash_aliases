@@ -53,7 +53,7 @@ alias bd='cd "$OLDPWD"'
 alias rmd='/bin/rm  --recursive --force --verbose '
 
 # Aliases for multiple directory listing commands
-alias ls='exa -F=always --icons'        # add colors and file type extensions
+alias ls='exa -F=always --icons -g'     # add colors and file type extensions
 alias la='ls -A'                        # show hidden files
 alias ll='ls -lg'                       # long listing format
 alias lx='ll -s=ext'                    # sort by extension
