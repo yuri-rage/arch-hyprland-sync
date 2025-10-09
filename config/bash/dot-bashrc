@@ -459,3 +459,6 @@ export FZF_DEFAULT_OPTS='--preview="bat --color=always {}"'
 [ -f /usr/share/fzf/completion.bash ] && \. /usr/share/fzf/key-bindings.bash
 
 export PATH=/opt/gcc-arm-none-eabi-10-2020-q4-major/bin:$PATH
+export GZ_SIM_SYSTEM_PLUGIN_PATH=$HOME/ardupilot_gazebo/build:${GZ_SIM_SYSTEM_PLUGIN_PATH}
+export GZ_SIM_RESOURCE_PATH=$HOME/ardupilot_gazebo/models:$HOME/ardupilot_gazebo/worlds:${GZ_SIM_RESOURCE_PATH}
+add_to_path "$HOME/ardupilot/Tools/autotest"
