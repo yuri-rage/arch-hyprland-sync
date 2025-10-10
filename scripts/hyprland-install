@@ -10,7 +10,7 @@ fi
 
 yay -Sy --needed --noconfirm hyprland
 yay -Sy --needed --noconfirm ghostty hyprcursor hyprpaper hyprpicker hyprpolkitagent hyprshot
-yay -Sy --needed --noconfirm gimp mako rofi-wayland waybar uwsm zen-browser-bin
+yay -Sy --needed --noconfirm gimp gnome-keyring mako rofi-wayland waybar uwsm zen-browser-bin
 yay -Sy --needed --noconfirm swayimg thunar thunar-archive-plugin thunar-volman tumbler viu
 yay -Sy --needed --noconfirm cava pipewire pipewire-pulse pwvucontrol
 yay -Sy --needed --noconfirm gtk-theme-material-black nwg-look papirus-icon-theme rose-pine-hyprcursor
