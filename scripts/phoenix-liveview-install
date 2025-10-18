@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+# exit on error
+set -e
+
+if ! command -v yay &> /dev/null; then
+    echo "yay not found. Exiting."
+    exit 1
+fi
+
+yay -Sy --needed --noconfirm elixir erlang-asn1 erlang-public_key erlang-ssl erlang-parsetools erlang-xmerl erlang-dialyzer
+yay -Sy --needed --noconfirm postgresql watchman-bin inotify-parsetools
+
+echo "phoenix-liveview install complete."
