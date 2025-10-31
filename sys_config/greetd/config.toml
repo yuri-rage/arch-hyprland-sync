@@ -2,5 +2,5 @@
 vt = 1
 
 [default_session]
-command = "uwsm start hyprland.desktop"
+command = "uwsm start niri.desktop"
 user = "yuri"
