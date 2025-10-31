@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+# exit on error
+set -e
+
+if ! command -v yay &> /dev/null; then
+    echo "yay not found. Exiting."
+    exit 1
+fi
+
+# probably want to run the hyprland-install script first, since it has more wayland/display dependencies
+yay -Sy --needed --noconfirm niri fuzzel rose-pine-cursor waybar-niri xwayland-satellite
+
+echo "niri install complete."
