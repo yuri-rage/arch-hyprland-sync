@@ -275,6 +275,7 @@ layout {
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
 spawn-at-startup "xwayland-satellite"
+spawn-sh-at-startup "swaybg -m fill -i ~/.local/share/wallpaper/wallpaper.png"
 environment {
     DISPLAY ":0"
 }

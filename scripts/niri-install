@@ -9,6 +9,6 @@ if ! command -v yay &> /dev/null; then
 fi
 
 # probably want to run the hyprland-install script first, since it has more wayland/display dependencies
-yay -Sy --needed --noconfirm niri fuzzel rose-pine-cursor waybar-niri xwayland-satellite
+yay -Sy --needed --noconfirm niri fuzzel rose-pine-cursor swaybg waybar-niri xwayland-satellite
 
 echo "niri install complete."
