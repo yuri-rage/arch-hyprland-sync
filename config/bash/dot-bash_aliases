@@ -130,3 +130,8 @@ alias glog='git log --oneline'
 
 # KITTY - alias to be able to use kitty features when connecting to remote servers(e.g use tmux on remote server)
 alias kssh="kitty +kitten ssh"
+
+# Aliase for top
+alias top=btop
+alias htop=btop
+
