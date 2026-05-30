@@ -1,0 +1,22 @@
+[Unit]
+Description=LM Studio headless backend (Xvfb)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+# Clear any inherited graphical session so Electron cannot attach to the real
+# Wayland/X compositor; it must use the throwaway Xvfb display instead.
+Environment=WAYLAND_DISPLAY=
+Environment=ELECTRON_OZONE_PLATFORM_HINT=x11
+# Run the Electron app headless against a virtual X display so the backend
+# (daemon + OpenAI server on :1234) comes up without any visible window.
+ExecStart=/usr/bin/xvfb-run --auto-servernum /usr/bin/lm-studio --no-sandbox --headless --ozone-platform=x11
+# Once the daemon answers, make sure the API server is started (no-op if up).
+# Run in the background so the loop does not block unit activation / boot.
+ExecStartPost=/bin/sh -c '( for i in $(seq 1 60); do %h/.lmstudio/bin/lms server status 2>/dev/null | grep -qi running && exit 0; %h/.lmstudio/bin/lms server start >/dev/null 2>&1; sleep 1; done ) & echo "$(date): LM Studio startup check completed" >> /tmp/lmstudio-startup.log 2>&1'
+Restart=on-failure
+RestartSec=10
+TimeoutStartSec=300
+
+[Install]
+WantedBy=default.target
